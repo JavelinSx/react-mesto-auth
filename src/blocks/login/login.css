@@ -6,7 +6,7 @@
 @media screen and (min-width:637px) and (max-width:100vw) {
 
     .login {
-        padding-bottom: 25px;
+        height: 600px;
         width: 358px;
     }
 

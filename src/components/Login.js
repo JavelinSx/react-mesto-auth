@@ -1,6 +1,21 @@
-import React from 'react'
- 
-const Login = props => {
+import {useState} from 'react'
+import { Link } from "react-router-dom";
+const Login = (onLogin) => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const handleChangeEmail = (e) => {
+        setEmail(e.target.value)
+    }
+    const handleChangePassword = (e) => {
+        setPassword(e.target.value)
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if(email !== '' && password !== ''){
+            onLogin(email, password)
+        }
+    }
   return (
     <div className='login'>
         <form className='login__form'>
@@ -8,6 +23,8 @@ const Login = props => {
             <ul className='login__input-container'>
                 <li className='login__input-item'>
                     <input  
+                        value={email}
+                        onChange={handleChangeEmail}
                         type="email" 
                         className="login__input" 
                         name="login" 
@@ -19,6 +36,8 @@ const Login = props => {
                 </li>
                 <li className='login__input-item'>
                     <input  
+                        value={password}
+                        onChange={handleChangePassword}
                         type="password" 
                         className="login__input" 
                         name="password" 
@@ -29,7 +48,13 @@ const Login = props => {
                     </input>
                 </li>
             </ul>
-            <button className="login__button" type="submit">Войти</button>
+            <button onClick={handleSubmit} className="login__button" type="submit">Войти</button>
+            <span className="login__link-sign-in">
+                Нет аккаунта?
+            <Link to="/sign-up" className="login__link">
+                Создать аккаунт
+            </Link>
+        </span>
         </form>
     </div>
   )
