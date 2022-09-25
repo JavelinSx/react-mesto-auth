@@ -1,6 +1,6 @@
 import {useState} from 'react'
-import { Link } from "react-router-dom";
-const Login = (onLogin) => {
+
+const Login = ({onLogin}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -30,7 +30,7 @@ const Login = (onLogin) => {
                         name="login" 
                         placeholder="Email" 
                         minLength="6" 
-                        maxLength="16" 
+                        maxLength="40" 
                         required>
                     </input>
                 </li>
@@ -49,12 +49,6 @@ const Login = (onLogin) => {
                 </li>
             </ul>
             <button onClick={handleSubmit} className="login__button" type="submit">Войти</button>
-            <span className="login__link-sign-in">
-                Нет аккаунта?
-            <Link to="/sign-up" className="login__link">
-                Создать аккаунт
-            </Link>
-        </span>
         </form>
     </div>
   )

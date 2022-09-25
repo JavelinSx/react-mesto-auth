@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Switch, Route, Redirect, useHistory } from "react-router-dom";
-import { register, login, validityToken } from "../utils/mestoAuth";
+import { Switch, Route, useHistory } from "react-router-dom";
+import { register, login, getUserContent } from "../utils/mestoAuth";
 
 import trueIcon from '../image/true-reg.svg'
 import falseIcon from '../image/false-reg.svg'
@@ -24,10 +24,12 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { api } from "../utils/utils";
 
 function App() {
+
+  const [email, setEmail] = useState('')
   const [messageToolTip, setMessageToolTip] = useState('');
   const [iconMessageToolTip, setIconMessageToolTip] = useState('');
   const [isInfoToolTipOpen, setIsInfoToolTipOpen] = useState(false)
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -62,8 +64,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    checkToken();
+    handleCheckToken();
   })
+  useEffect(() => {
+    if (loggedIn) {
+      history.push('/');
+    }
+  }, [loggedIn, history]);
 
   function handleCardLike(card) {
     const isLiked = card.likes.some((like) => like._id === currentUser._id);
@@ -152,21 +159,21 @@ function App() {
   function onLogin(email, password) {
     login(email,password)
     .then((res) => {
-      if(res.ok){
-        setLoggedIn(true)
-        history.push('/')
-        localStorage.setItem('jwt', res.token)
-      }
+      setEmail(email)
+      setLoggedIn(true)
+      history.push('/')
+      localStorage.setItem('jwt', res.token)
     })
     .catch((err) => {
       console.log(err)
     })
+
   }
 
   function onRegister(email, password) {
     register(email, password)
     .then((res) => {
-      if(res.ok){
+      if(res.data.email){
         history.push('/sign-in')
         setIconMessageToolTip(trueIcon)
         setMessageToolTip('Вы успешно зарегистрировались!')
@@ -174,22 +181,22 @@ function App() {
       }
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err.message)
       setIconMessageToolTip(falseIcon)
       setMessageToolTip('Что-то пошло не так!Попробуйте ещё раз.')
       setIsInfoToolTipOpen(true)
     })
   }
 
-  function checkToken() {
+  const handleCheckToken = () => {
     const token = localStorage.getItem('jwt')
     if(token){
-      validityToken(token)
+      getUserContent(token)
       .then((res) => {
-        if(res.ok){
           setLoggedIn(true)
+          setEmail(res.data.email)
           history.push('/')
-        }
+    
       })
       .catch((err) => {
         console.log(err)
@@ -204,11 +211,14 @@ function App() {
     setLoggedIn(false)
   }
 
+
+
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
-        <Header />
+        <Header email={email} loggedIn={loggedIn} logOut={logOut}/>
         <Switch>
+
           <ProtectedRoute
             exact
             path="/"
@@ -223,15 +233,13 @@ function App() {
             onCardDelete={handleCardDelete}
           />
           <Route path="/sign-in">
-            <Login onLogin={onLogin} />
+              <Login onLogin={onLogin} />
           </Route>
           <Route path="/sign-up">
             <Register onRegister={onRegister} />
           </Route>
 
-          <Route>
-            {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-up" />}
-          </Route>
+
         </Switch>
         <Footer />
         <EditProfilePopup

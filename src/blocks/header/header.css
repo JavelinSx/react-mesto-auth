@@ -1,6 +1,11 @@
 .header {
     width: 320px;
     border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
 
 }
 
@@ -8,6 +13,7 @@
 
     .header {
         width: 586px;
+        flex-direction: row;
     }
 
 }
@@ -15,6 +21,7 @@
 
     .header {
         width: 880px;
+        flex-direction: row;
     }
 
 }

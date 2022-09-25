@@ -1,6 +1,11 @@
 import logo from '../image/logo.svg';
+
+import { useLocation } from 'react-router-dom';
+
 import {Link} from 'react-router-dom'
-function Header({link, text, email}){
+function Header({loggedIn, email, logOut}){
+    const location = useLocation();
+
     return (
 
         <header className="header">
@@ -8,8 +13,24 @@ function Header({link, text, email}){
             <button  className="logo">
                 <img src={logo} alt="Лого" className="logo__img"></img>
             </button>
-            <span className='header-email'>{email}</span>
-            <Link to={link}>{text}</Link>
+            {location.pathname === '/sign-in' && (
+                <Link to="/sign-up" className="header__link">
+                Регистрация
+                </Link>
+            )}
+            {location.pathname === '/sign-up' && (
+                <Link to="/sign-in" className="header__link">
+                Войти
+                </Link>
+            )}
+            {loggedIn && (
+                <nav className="header__nav">
+                <span className='header__email'>{email}</span>
+                <button className="header__link" onClick={() => logOut()}>
+                    Выйти
+                </button>
+                </nav>
+            )}
 
         </header>
         

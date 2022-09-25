@@ -32,7 +32,7 @@ const Register = ({onRegister}) => {
               name="login"
               placeholder="Email"
               minLength="6"
-              maxLength="16"
+              maxLength="30"
               required
             ></input>
           </li>
