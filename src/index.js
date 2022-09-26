@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  < BrowserRouter>
+  <BrowserRouter basename='https://javelinsx.github.io/react-mesto-auth/'>
     <React.StrictMode>
       <App />
 
