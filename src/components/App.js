@@ -21,7 +21,7 @@ import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { api } from "../utils/Api";
+import { api } from "../utils/utils";
 function App() {
 
   const [email, setEmail] = useState('')

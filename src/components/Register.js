@@ -50,15 +50,18 @@ const Register = ({onRegister}) => {
             ></input>
           </li>
         </ul>
-        <button className="login__button" type="submit">
-          Зарегистрироваться
-        </button>
-        <span className="login__link-sign-in">
-          Уже зарегистированы?
-          <Link to="/sign-in" className="login__link">
-            Войти
-          </Link>
-        </span>
+        <div className="login__container-submit">
+          <button className="login__button" type="submit">
+            Зарегистрироваться
+          </button>
+          <span className="login__link-sign-in">
+            Уже зарегистированы?
+            <Link to="/sign-in" className="login__link">
+              Войти
+            </Link>
+          </span>
+        </div>
+
       </form>
     </div>
   );

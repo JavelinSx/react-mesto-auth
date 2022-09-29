@@ -9,4 +9,9 @@
     color: #fff;
     cursor: pointer;
     padding-left: 5px;
+    transition: opacity 1s ease ;
+}
+.login__link:hover{
+    cursor: pointer;
+    opacity: .6;
 }

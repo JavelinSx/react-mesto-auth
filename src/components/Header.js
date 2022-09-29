@@ -13,6 +13,7 @@ function Header({loggedIn, email, logOut}){
             <button  className="logo">
                 <img src={logo} alt="Лого" className="logo__img"></img>
             </button>
+
             {location.pathname === '/sign-in' && (
                 <Link to="/sign-up" className="header__link">
                 Регистрация
@@ -23,6 +24,7 @@ function Header({loggedIn, email, logOut}){
                 Войти
                 </Link>
             )}
+
             {loggedIn && (
                 <nav className="header__nav">
                 <span className='header__email'>{email}</span>
