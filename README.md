@@ -21,8 +21,8 @@
 
 ## Инструкция для работы с проектом:
 ```
-git clone git@github.com:JavelinSx/mesto-react.git
-cd mesto-react
+git clone git@github.com:JavelinSx/mesto-react-auth.git
+cd mesto-react-auths
 npm run start
 ```
 ## Задеплоить проект в Github Pages
