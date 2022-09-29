@@ -22,7 +22,7 @@ import AddPlacePopup from "./AddPlacePopup";
 
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { api } from "../utils/utils";
-
+console.log(api)
 function App() {
 
   const [email, setEmail] = useState('')
@@ -65,7 +65,7 @@ function App() {
 
   useEffect(() => {
     handleCheckToken();
-  })
+  },[])
   useEffect(() => {
     if (loggedIn) {
       history.push('/');
