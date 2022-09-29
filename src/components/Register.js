@@ -1,23 +1,22 @@
-import {useState} from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
+const Register = ({ onRegister }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-const Register = ({onRegister}) => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-
-    const handleChangeEmail = (e) => {
-        setEmail(e.target.value)
+  const handleChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const handleChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email !== "" && password !== "") {
+      onRegister(email, password);
     }
-    const handleChangePassword = (e) => {
-        setPassword(e.target.value)
-    }
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        if(email !== '' && password !== ''){
-            onRegister(email, password)
-        }
-    }
+  };
   return (
     <div className="login">
       <form onSubmit={handleSubmit} className="login__form">
@@ -61,7 +60,6 @@ const Register = ({onRegister}) => {
             </Link>
           </span>
         </div>
-
       </form>
     </div>
   );

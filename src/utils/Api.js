@@ -1,117 +1,112 @@
+export default class Api {
+  constructor(baseUrl, headers) {
+    this._baseUrl = baseUrl;
+    this._headers = headers;
+  }
 
+  _request({ url, options }) {
+    return fetch(url, options).then(this._parseResponse);
+  }
 
-export default class Api{
-    constructor(baseUrl, headers){
-        this._baseUrl = baseUrl;
-        this._headers = headers;
+  _parseResponse(res) {
+    if (res.ok) {
+      return res.json();
     }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  }
 
-     _request({url, options}){
-        return fetch(url, options).then(this._parseResponse)
+  getInitialCards() {
+    return this._request({
+      url: `${this._baseUrl}/cards`,
+      options: {
+        method: "GET",
+        headers: this._headers,
+      },
+    });
+  }
 
-    }
+  addCard(name, link) {
+    return this._request({
+      url: `${this._baseUrl}/cards`,
+      options: {
+        method: "POST",
+        headers: this._headers,
+        body: JSON.stringify({
+          name: name,
+          link: link,
+        }),
+      },
+    });
+  }
 
-    _parseResponse(res){
-        if(res.ok){
-            return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
+  deleteCard(cardId) {
+    return this._request({
+      url: `${this._baseUrl}/cards/${cardId}`,
+      options: {
+        method: "DELETE",
+        headers: this._headers,
+      },
+    });
+  }
 
-    }
+  changeLikeCardStatus(cardId, isLiked) {
+    return isLiked ? this._setLikeCard(cardId) : this._removeLikeCard(cardId);
+  }
 
-    getInitialCards(){
-       return this._request({
-            url: `${this._baseUrl}/cards`,
-            options: {
-                method: "GET",
-                headers: this._headers
-            }        
-        })
-    }
-    
-    addCard(name, link){
-        return this._request({
-            url: `${this._baseUrl}/cards`,
-            options: {
-                method: "POST",
-                headers: this._headers,
-                body: JSON.stringify({
-                    name: name,
-                    link: link
-                })
-            }
-        })
-    }
+  _setLikeCard(cardId) {
+    return this._request({
+      url: `${this._baseUrl}/cards/${cardId}/likes`,
+      options: {
+        method: "PUT",
+        headers: this._headers,
+      },
+    });
+  }
 
-    deleteCard(cardId){
-        return this._request({
-            url: `${this._baseUrl}/cards/${cardId}`,
-            options: {
-                method: "DELETE",
-                headers: this._headers
-            }
-        })
-    }
+  _removeLikeCard(cardId) {
+    return this._request({
+      url: `${this._baseUrl}/cards/${cardId}/likes`,
+      options: {
+        method: "DELETE",
+        headers: this._headers,
+      },
+    });
+  }
 
-    changeLikeCardStatus(cardId, isLiked){
-       return isLiked ? this._setLikeCard(cardId) : this._removeLikeCard(cardId)
-    }
-    
-    _setLikeCard(cardId){
-        return this._request({
-            url: `${this._baseUrl}/cards/${cardId}/likes`,
-            options: {
-                method: "PUT",
-                headers: this._headers
-            }
-        })
-    }
+  getUserInfo() {
+    return this._request({
+      url: `${this._baseUrl}/users/me`,
+      options: {
+        method: "GET",
+        headers: this._headers,
+      },
+    });
+  }
 
-    _removeLikeCard(cardId){
-        return this._request({
-            url: `${this._baseUrl}/cards/${cardId}/likes`,
-            options: {
-                method: "DELETE",
-                headers: this._headers
-            }
-        })
-    }
+  editUserInfo({ name, about }) {
+    return this._request({
+      url: `${this._baseUrl}/users/me`,
+      options: {
+        method: "PATCH",
+        headers: this._headers,
+        body: JSON.stringify({
+          name: name,
+          about: about,
+        }),
+      },
+    });
+  }
 
-    getUserInfo(){
-       return this._request({
-            url: `${this._baseUrl}/users/me`,
-            options: {
-                method: "GET",
-                headers: this._headers
-            }     
-        })
-    }
-
-    editUserInfo({name, about}){
-        return this._request({
-            url: `${this._baseUrl}/users/me`,
-            options: {
-                method: "GET",
-                headers: this._headers,
-                body: JSON.stringify({
-                    name: name,
-                    about: about
-                })
-            }     
-        })
-    }
-
-    editAvatar(avatar){
-        return this._request({
-            url: `${this._baseUrl}/users/me/avatar`,
-            options: {
-                method: "PATCH",
-                headers: this._headers,
-                body: JSON.stringify({
-                    avatar: avatar
-                })
-            }     
-        })
-    }
-    
+  editAvatar(avatar) {
+    return this._request({
+      url: `${this._baseUrl}/users/me/avatar`,
+      options: {
+        method: "PATCH",
+        headers: this._headers,
+        body: JSON.stringify({
+          avatar: avatar,
+        }),
+      },
+    });
+  }
 }

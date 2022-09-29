@@ -133,6 +133,7 @@ function App() {
   function handleUpdateUser(name, about) {
     api
       .editUserInfo(name, about)
+      
       .then((userUpdate) => {
         setCurrentUser(userUpdate)
         closeAllPopups();
