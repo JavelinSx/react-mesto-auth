@@ -1,8 +1,8 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = "https://auth.nomoreparties.co";
 
 const headers = {            
-    'Accept': 'application/json',
-    'Content-Type': 'application/json' 
+    "Accept": "application/json",
+    "Content-Type": "application/json" 
 }
 
 const _parseResponse = (res) => {
@@ -17,10 +17,10 @@ const _request = ({url, options}) => {
 }
 
 export const register = (email, password) => {
-    _request({
+    return _request({
         url: `${BASE_URL}/signup`,
         options: {
-            method: 'GET',
+            method: "GET",
             headers: headers,
             body: JSON.stringify({password, email})
         }
@@ -28,23 +28,23 @@ export const register = (email, password) => {
 }
 
 export const login = (email, password) => {
-    _request({
+    return _request({
         url: `${BASE_URL}/signin`,
         options: {
-            method: 'POST',
+            method: "POST",
             headers: headers,
             body: JSON.stringify({password, email})
         }
     })
 }
 
-export const getUserContent = (token) => {
-    _request({
+export const checkToken = (token) => {
+    return _request({
         url: `${BASE_URL}/users/me`,
         options: {
-            method: 'GET',
+            method: "GET",
             headers: {
-                'Authorization': `Bearer ${token}`,
+                "Authorization": `Bearer ${token}`,
                 ...headers},
         }
     })

@@ -20,7 +20,7 @@ const Register = ({onRegister}) => {
     }
   return (
     <div className="login">
-      <form className="login__form">
+      <form onSubmit={handleSubmit} className="login__form">
         <h3 className="login__title">Регистрация</h3>
         <ul className="login__input-container">
           <li className="login__input-item">
@@ -50,7 +50,7 @@ const Register = ({onRegister}) => {
             ></input>
           </li>
         </ul>
-        <button onClick={handleSubmit} className="login__button" type="submit">
+        <button className="login__button" type="submit">
           Зарегистрироваться
         </button>
         <span className="login__link-sign-in">

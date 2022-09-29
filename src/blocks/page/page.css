@@ -5,7 +5,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     box-sizing:border-box;
     padding-left: 19px;
     padding-right: 19px;
+    min-height: 100vh;
+    position: relative;;
 }

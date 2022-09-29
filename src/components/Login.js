@@ -18,7 +18,7 @@ const Login = ({onLogin}) => {
     }
   return (
     <div className='login'>
-        <form className='login__form'>
+        <form onSubmit={handleSubmit} className='login__form'>
             <h3 className='login__title'>Вход</h3>
             <ul className='login__input-container'>
                 <li className='login__input-item'>
@@ -48,7 +48,7 @@ const Login = ({onLogin}) => {
                     </input>
                 </li>
             </ul>
-            <button onClick={handleSubmit} className="login__button" type="submit">Войти</button>
+            <button className="login__button" type="submit">Войти</button>
         </form>
     </div>
   )
