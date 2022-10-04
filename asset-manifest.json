@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "https://javelinsx.github.io/react-mesto-auth/static/css/main.6570528e.css",
-    "main.js": "https://javelinsx.github.io/react-mesto-auth/static/js/main.0393f3af.js",
+    "main.js": "https://javelinsx.github.io/react-mesto-auth/static/js/main.350a9140.js",
     "static/js/787.2df4b1c8.chunk.js": "https://javelinsx.github.io/react-mesto-auth/static/js/787.2df4b1c8.chunk.js",
     "static/media/Inter-Regular.woff": "https://javelinsx.github.io/react-mesto-auth/static/media/Inter-Regular.9bc9c9a79d7b8eaf3b03.woff",
     "static/media/Inter-Regular.woff2": "https://javelinsx.github.io/react-mesto-auth/static/media/Inter-Regular.28532dd49eac35086006.woff2",
@@ -12,20 +12,20 @@
     "static/media/logo.svg": "https://javelinsx.github.io/react-mesto-auth/static/media/logo.bbe2a6eafac19c3d031c272c424875ca.svg",
     "static/media/like.svg": "https://javelinsx.github.io/react-mesto-auth/static/media/like.1ad06e85f169668a1f36.svg",
     "index.html": "https://javelinsx.github.io/react-mesto-auth/index.html",
-    "static/media/false-reg.svg": "https://javelinsx.github.io/react-mesto-auth/static/media/false-reg.df8eddf661ff88f2d0efd3d570d14309.svg",
+    "static/media/false-reg.svg": "https://javelinsx.github.io/react-mesto-auth/static/media/false-reg.d4ce2a261b68c6da973d51ef98afae1a.svg",
     "static/media/basket-icon.svg": "https://javelinsx.github.io/react-mesto-auth/static/media/basket-icon.ce3b64935accf9b8212e.svg",
-    "static/media/true-reg.svg": "https://javelinsx.github.io/react-mesto-auth/static/media/true-reg.1b6082f862eac35e2514460237d96ecc.svg",
+    "static/media/true-reg.svg": "https://javelinsx.github.io/react-mesto-auth/static/media/true-reg.a9eb6caf1da3ff48b215fb1dd9477d74.svg",
     "static/media/black-like.svg": "https://javelinsx.github.io/react-mesto-auth/static/media/black-like.35948469632d0421d697.svg",
     "static/media/Edit-Button.svg": "https://javelinsx.github.io/react-mesto-auth/static/media/Edit-Button.af236f6cf67005f1d7aa.svg",
     "static/media/profile-edit.svg": "https://javelinsx.github.io/react-mesto-auth/static/media/profile-edit.ae1a976ddb506239e9f0.svg",
     "static/media/Vector-mini.svg": "https://javelinsx.github.io/react-mesto-auth/static/media/Vector-mini.d5d6f8af0577b9c95ee4.svg",
     "static/media/Vector.svg": "https://javelinsx.github.io/react-mesto-auth/static/media/Vector.bed8c136e13907f5eefb.svg",
     "main.6570528e.css.map": "https://javelinsx.github.io/react-mesto-auth/static/css/main.6570528e.css.map",
-    "main.0393f3af.js.map": "https://javelinsx.github.io/react-mesto-auth/static/js/main.0393f3af.js.map",
+    "main.350a9140.js.map": "https://javelinsx.github.io/react-mesto-auth/static/js/main.350a9140.js.map",
     "787.2df4b1c8.chunk.js.map": "https://javelinsx.github.io/react-mesto-auth/static/js/787.2df4b1c8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6570528e.css",
-    "static/js/main.0393f3af.js"
+    "static/js/main.350a9140.js"
   ]
 }
