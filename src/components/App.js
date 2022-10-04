@@ -41,6 +41,21 @@ function App() {
   });
   const [cards, setCards] = useState([]);
   const history = useHistory();
+  const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || isImagePopupOpen || isInfoToolTipOpen
+
+  useEffect(() => {
+    function closeByEscape(evt) {
+      if(evt.key === 'Escape') {
+        closeAllPopups();
+      }
+    }
+    if(isOpen) { 
+      document.addEventListener('keydown', closeByEscape);
+      return () => {
+        document.removeEventListener('keydown', closeByEscape);
+      }
+    }
+  }, [isOpen]) 
 
   useEffect(() => {
     api
@@ -87,7 +102,7 @@ function App() {
   function handleCardDelete(card) {
     api
       .deleteCard(card._id)
-      .then(setCards((cards) => cards.filter((c) => c._id !== card._id)))
+      .then(() => setCards((cards) => cards.filter((c) => c._id !== card._id)))
       .catch((e) => {
         console.log(e);
       });
@@ -177,15 +192,16 @@ function App() {
         history.push('/sign-in')
         setIconMessageToolTip(trueIcon)
         setMessageToolTip('Вы успешно зарегистрировались!')
-        setIsInfoToolTipOpen(true)
       }
     })
     .catch((err) => {
       console.log(err.message)
       setIconMessageToolTip(falseIcon)
       setMessageToolTip('Что-то пошло не так!Попробуйте ещё раз.')
-      setIsInfoToolTipOpen(true)
     })
+    .finally(
+      setIsInfoToolTipOpen(true) 
+    )
   }
 
   useEffect(() => {

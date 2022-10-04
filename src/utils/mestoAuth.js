@@ -20,7 +20,7 @@ export const register = (email, password) => {
   return _request({
     url: `${BASE_URL}/signup`,
     options: {
-      method: "GET",
+      method: "POST",
       headers: headers,
       body: JSON.stringify({ password, email }),
     },
