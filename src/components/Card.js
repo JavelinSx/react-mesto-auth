@@ -24,7 +24,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   };
 
   return (
-    <>
+    <li className="photo__item">
       <button
         className={cardDeleteButtonClassName}
         onClick={handleCardDelete}
@@ -49,7 +49,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
           </span>
         </div>
       </div>
-    </>
+    </li>
   );
 }
 

@@ -46,14 +46,14 @@ function Main({
         <ul className="photo__grid">
           {cards.map((card) => {
             return (
-              <li key={card._id} className="photo__item">
-                <Card
-                  card={card}
-                  onCardClick={onCardClick}
-                  onCardLike={onCardLike}
-                  onCardDelete={onCardDelete}
-                />
-              </li>
+              <Card
+                card={card}
+                onCardClick={onCardClick}
+                onCardLike={onCardLike}
+                onCardDelete={onCardDelete}
+                key={card._id}
+              >
+              </Card>
             );
           })}
         </ul>
