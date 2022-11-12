@@ -1,4 +1,4 @@
-export const BASE_URL = "https://auth.nomoreparties.co";
+export const BASE_URL = "javelin.nomoredomains.icu";
 
 const headers = {
   Accept: "application/json",
@@ -18,7 +18,7 @@ const _request = ({ url, options }) => {
 
 export const register = (email, password) => {
   return _request({
-    url: `${BASE_URL}/signup`,
+    url: `/sign-up`,
     options: {
       method: "POST",
       headers: headers,
@@ -29,7 +29,7 @@ export const register = (email, password) => {
 
 export const login = (email, password) => {
   return _request({
-    url: `${BASE_URL}/signin`,
+    url: `/sign-in`,
     options: {
       method: "POST",
       headers: headers,
@@ -40,7 +40,7 @@ export const login = (email, password) => {
 
 export const checkToken = (token) => {
   return _request({
-    url: `${BASE_URL}/users/me`,
+    url: `/users/me`,
     options: {
       method: "GET",
       headers: {
